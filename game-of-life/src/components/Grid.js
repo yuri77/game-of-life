@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
-const numRows = 50
-const numCols = 50
+const numRows = 10
+const numCols = 10
 
 
 const Grid = props => {
@@ -14,12 +14,28 @@ const Grid = props => {
         return rows
     })
 
-    // console.log("Array", Array(50))
+    console.log(grid)
     return (
 
-        <div>
-            tmp
-        </div>
+        <div style={{
+            display: "grid",
+            gridTemplateColumns: `repeat(${numCols},20px)`
+        }}
+        >
+            {
+                grid.map((rows, i) =>
+                    rows.map((col, j) => <div
+                        key={`${i}-${j}`}
+                        style={{
+                            width: 20,
+                            height: 20,
+                            backgroundColor: grid[i][j] ? "blue" : undefined,
+                            border: "solid 1px black"
+                        }} />
+                    )
+                )
+            }
+        </div >
     )
 }
 
